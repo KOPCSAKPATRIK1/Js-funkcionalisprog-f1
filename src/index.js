@@ -14,21 +14,39 @@ class Szazlabu
     toString()
     {
         console.log(this.#labakszama + " lábú százlábú")
+        return (this.#labakszama + " lábú százlábú");
     }
 }
 
 
-function labakbolSzazlabuk(szazTomb)
+function labakbolSzazlabuk(kapottTomb){
+
+    kapottTomb.forEach((e,index)=>{
+        let sz = new Szazlabu(e);
+        szazTomb.push(sz);
+    });
+
+    szazTomb.forEach((e)=>{
+        e.toString();
+    })
+
+};
+
+function szazlabuMegjelenit(id, szazTomb)
 {
-   let kimenet = new Szazlabu(szazTomb);
-   console.log(kimenet);
+    let ul = document.getElementById(id);
+    szazTomb.forEach((e) => {
+        let li = document.createElement('li');
+        li.innerHTML = e.toString();
+        ul.appendChild(li);
+    })
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
     for(let i = 0; i < 20; i++){
        let rnd = Math.floor(Math.random() * 29)+1;
        tomb[i] = rnd;
-    }
+    };
 
     tomb.forEach((e,index)=>{
         console.log(index+". "+e);
@@ -41,12 +59,16 @@ document.addEventListener('DOMContentLoaded',()=>{
         ujTomb.forEach((e,index)=>{
             console.log(index+1+". "+e);
             });      
-    })
+    });
 
    
     document.getElementById('hozzaad').addEventListener('click', () => {
         let szam = parseInt(document.getElementById('szam').value);
         tomb.push(szam);
         console.log(tomb);
-    })
+    });
+
+    labakbolSzazlabuk(tomb);
+    szazlabuMegjelenit('szazLista', szazTomb);
+
 });
