@@ -21,10 +21,24 @@ class Szazlabu
 
 function labakbolSzazlabuk(kapottTomb){
 
+
+    /*
+    kapottTomb.map(e => {
+        let sz = new Szazlabu(e);
+        szazTomb.push(sz);
+    })
+    */
+
     kapottTomb.forEach((e,index)=>{
         let sz = new Szazlabu(e);
         szazTomb.push(sz);
     });
+
+    /*
+    szazTomb.map(e => {
+        e.toString();
+    })
+    */
 
     szazTomb.forEach((e)=>{
         e.toString();
